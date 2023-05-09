@@ -9,6 +9,11 @@ var PhoneDataSchema = new Schema({
 	'latitude' : Number,
 	'longitude' : Number,
 	'captureDate' : Date
+	// pospešek x, y, z
+	// svetlost okolice (tunel?)
+	// zračni tlak??
+	// rotacija naprave (gyroscope)
+	// stanje ceste (rdeč, oramnzn, zelen tak da mybe number?)
 });
 
 module.exports = mongoose.model('PhoneData', PhoneDataSchema);
