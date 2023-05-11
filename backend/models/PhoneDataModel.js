@@ -8,11 +8,19 @@ var PhoneDataSchema = new Schema({
    	},
 	'latitude' : Number,
 	'longitude' : Number,
-	'captureDate' : Date
-	// pospešek x, y, z
+	'captureDate' : Date,
+	'accelerometerX' : Number,
+	'accelerometerY' : Number,
+	'accelerometerZ' : Number,
+	'userAccelerometerX' : Number,
+	'userAccelerometerY' : Number,
+	'userAccelerometerZ' : Number,
+	'gyroscopeX' : Number,
+	'gyroscopeY' : Number,
+	'gyroscopeZ' : Number
+
 	// svetlost okolice (tunel?)
 	// zračni tlak??
-	// rotacija naprave (gyroscope)
 	// stanje ceste (rdeč, oramnzn, zelen tak da mybe number?)
 });
 
