@@ -6,6 +6,7 @@ var userSchema = new Schema({
 	'username' : String,
 	'password' : String,
 	'email' : String
+	// razpoznava obraza
 });
 
 userSchema.pre('save', function(next){

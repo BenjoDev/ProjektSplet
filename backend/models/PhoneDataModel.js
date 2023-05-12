@@ -17,11 +17,9 @@ var PhoneDataSchema = new Schema({
 	'userAccelerometerZ' : Number,
 	'gyroscopeX' : Number,
 	'gyroscopeY' : Number,
-	'gyroscopeZ' : Number
-
-	// svetlost okolice (tunel?)
-	// zračni tlak??
-	// stanje ceste (rdeč, oramnzn, zelen tak da mybe number?)
+	'gyroscopeZ' : Number,
+	'roadQuality': Number // rdec = 2, oranzn = 1, zelen = 0 posebi model
+	// svetlost tunela
 });
 
 module.exports = mongoose.model('PhoneData', PhoneDataSchema);

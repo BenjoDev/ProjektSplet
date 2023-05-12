@@ -37,7 +37,7 @@ function PhoneData() {
   
     return (
       <div>
-        <h3>Photos:</h3>
+        <h3>Phone data:</h3>
         <ul>
           {phoneData.map((item) => (
             <li key={item._id}>
