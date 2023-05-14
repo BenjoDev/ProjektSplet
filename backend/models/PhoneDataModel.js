@@ -18,8 +18,8 @@ var PhoneDataSchema = new Schema({
 	'gyroscopeX' : Number,
 	'gyroscopeY' : Number,
 	'gyroscopeZ' : Number,
-	'roadQuality': Number // rdec = 2, oranzn = 1, zelen = 0 posebi model
-	// svetlost tunela
+	'lightIntensity' : Number
+	// TODO 'roadQuality': Number // rdec = 2, oranzn = 1, zelen = 0 posebi model
 });
 
 module.exports = mongoose.model('PhoneData', PhoneDataSchema);

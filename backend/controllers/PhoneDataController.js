@@ -62,7 +62,17 @@ module.exports = {
             capturedBy : req.session.userId,
 			latitude : req.body.latitude,
 			longitude : req.body.longitude,
-            captureDate : new Date()
+            captureDate : new Date(),
+            accelerometerX : req.body.accelerometerX,
+			accelerometerY : req.body.accelerometerY,
+            accelerometerZ : req.body.accelerometerZ,
+			userAccelerometerX : req.body.userAccelerometerX,
+            userAccelerometerY : req.body.userAccelerometerY,
+			userAccelerometerZ : req.body.userAccelerometerZ,
+            gyroscopeX : req.body.gyroscopeX,
+			gyroscopeY : req.body.gyroscopeY,
+            gyroscopeZ : req.body.gyroscopeZ,
+			lightIntensity : req.body.lightIntensity,
         });
 
         PhoneData.save(function (err, PhoneData) {

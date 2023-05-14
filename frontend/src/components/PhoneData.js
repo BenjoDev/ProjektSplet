@@ -41,7 +41,10 @@ function PhoneData() {
         <ul>
           {phoneData.map((item) => (
             <li key={item._id}>
-              User: {item.capturedBy}, Latitude: {item.latitude}, Longitude: {item.longitude}, Capture date: {item.captureDate}
+              User: {item.capturedBy}, Latitude: {item.latitude}, Longitude: {item.longitude}, Capture date: {item.captureDate}, 
+              accelerometerX: {item.accelerometerX}, accelerometerY: {item.accelerometerY}, accelerometerZ: {item.accelerometerZ}, 
+              userAccelerometerX: {item.userAccelerometerX}, userAccelerometerY: {item.userAccelerometerY}, userAccelerometerZ: {item.userAccelerometerZ}, 
+              gyroscopeX: {item.gyroscopeX}, gyroscopeY: {item.gyroscopeY}, gyroscopeZ: {item.gyroscopeZ}, lightIntensity: {item.lightIntensity}
             </li>
           ))}
         </ul>
@@ -49,5 +52,5 @@ function PhoneData() {
       </div>
     );
   }
-  
+
 export default PhoneData;
