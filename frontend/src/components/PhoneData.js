@@ -24,7 +24,7 @@ function PhoneData() {
       longitude: -118.2437
     };
 
-    const middleLocations = {
+    const middleLocation = {
       latitude: 37.567, 
       longitude: -120.012
     };
@@ -46,12 +46,14 @@ function PhoneData() {
             </li>
           ))}
         </ul>
+        <div style={{ height: '500px' }}>
         <PhoneMap
           phoneData={phoneData}
           startLocation={startLocation}
-          middleLocation={middleLocations}
+          middleLocation={middleLocation}
           endLocation={endLocation}
         />
+      </div>
       </div>
     );
   }

@@ -1,15 +1,25 @@
 import { useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-routing-machine';
 
 function PhoneMap({ phoneData, startLocation, middleLocation, endLocation }) {
+  const mapRef = useRef(null);
+  const routingControlRef = useRef(null);
+
   useEffect(() => {
-    const map = L.map('map').setView([0, 0], 2);
+    const map = L.map(mapRef.current).setView([0, 0], 3);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: 'Map data &copy; OpenStreetMap contributors'
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+      maxZoom: 18
     }).addTo(map);
+
+      phoneData.forEach(item => {
+        const marker = L.marker([item.latitude, item.longitude]).addTo(map);
+        marker.bindPopup(`User: ${item.capturedBy}, Capture date: ${item.captureDate}`);
+      });
 
     const routingControl = L.Routing.control({
       waypoints: [
@@ -26,23 +36,27 @@ function PhoneMap({ phoneData, startLocation, middleLocation, endLocation }) {
             weight: 4
           }
         ]
-      }
+      },
+      createMarker: function() { return null; }
     }).addTo(map);
 
-    phoneData.forEach(item => {
-      const marker = L.marker([item.latitude, item.longitude]).addTo(map);
-      marker.bindPopup(`User: ${item.capturedBy}, Capture date: ${item.captureDate}`);
-    });
+    routingControlRef.current = routingControl;
 
     return () => {
-      if (map && typeof map.removeLayer === 'function') {
-        map.removeLayer(routingControl);
+      if (routingControlRef.current) {
+        routingControlRef.current.getPlan().setWaypoints([]);
+        routingControlRef.current.hide();
+        map.removeControl(routingControlRef.current);
+      }
+      if (map && typeof map.remove === 'function') {
         map.remove();
       }
     };
   }, [phoneData, startLocation, middleLocation, endLocation]);
 
-  return <div id="map" style={{ height: '400px' }}></div>;
+  return (
+    <div ref={mapRef} style={{ height: '500px' }} />
+  );
 }
 
 export default PhoneMap;
