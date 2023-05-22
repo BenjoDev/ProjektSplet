@@ -51,28 +51,27 @@ module.exports = {
      * PhoneDataController.create()
      */
     create: function (req, res) {
+        // console.log(req.body.capturedBy);
 
-        console.log(req.session.userId);
-        console.log(req.body.latitude);
-        console.log(req.body.longitude);
-
-        console.log(req.body);
-
+        // console.log(req.body.accelerometerX);
+        // console.log(req.body.longitude_end);
         var PhoneData = new PhonedataModel({
-            capturedBy : req.session.userId,
-			latitude : req.body.latitude,
-			longitude : req.body.longitude,
+            capturedBy : req.body.capturedBy,
+            latitude_start : req.body.latitude_start,
+            longitude_start : req.body.longitude_start,
+            latitude_end : req.body.latitude_end,
+            longitude_end : req.body.longitude_end,
             captureDate : new Date(),
-            accelerometerX : req.body.accelerometerX,
-			accelerometerY : req.body.accelerometerY,
-            accelerometerZ : req.body.accelerometerZ,
-			userAccelerometerX : req.body.userAccelerometerX,
-            userAccelerometerY : req.body.userAccelerometerY,
-			userAccelerometerZ : req.body.userAccelerometerZ,
-            gyroscopeX : req.body.gyroscopeX,
-			gyroscopeY : req.body.gyroscopeY,
-            gyroscopeZ : req.body.gyroscopeZ,
-			lightIntensity : req.body.lightIntensity,
+            accelerometerX: req.body.accelerometerX,
+            accelerometerY: req.body.accelerometerY,
+            accelerometerZ: req.body.accelerometerZ,
+            userAccelerometerX: req.body.userAccelerometerX,
+            userAccelerometerY: req.body.userAccelerometerY,
+            userAccelerometerZ: req.body.userAccelerometerZ,
+            gyroscopeX: req.body.gyroscopeX,
+            gyroscopeY: req.body.gyroscopeY,
+            gyroscopeZ: req.body.gyroscopeZ,
+            lightIntensity: req.body.lightIntensity,
         });
 
         PhoneData.save(function (err, PhoneData) {
