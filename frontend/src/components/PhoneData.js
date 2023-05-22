@@ -1,27 +1,6 @@
 import { useState, useEffect } from 'react';
-import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-
-function PhoneMap({ phoneData }) {
-    useEffect(() => {
-      const map = L.map('map').setView([0, 0], 2);
-  
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data &copy; OpenStreetMap contributors'
-      }).addTo(map);
-  
-      phoneData.forEach(item => {
-        const marker = L.marker([item.latitude, item.longitude]).addTo(map);
-        marker.bindPopup(`User: ${item.capturedBy}, Capture date: ${item.captureDate}`);
-      });
-  
-      return () => {
-        map.remove();
-      };
-    }, [phoneData]);
-  
-    return <div id="map" style={{ height: '400px' }}></div>;
-  }
+import PhoneMap from './PhoneMap';
 
 function PhoneData() {
     const [phoneData, setPhoneData] = useState([]);
@@ -34,7 +13,26 @@ function PhoneData() {
       };
       getPhoneData();
     }, []);
-  
+
+    const startLocation = {
+      latitude: 37.7749,
+      longitude: -122.4194
+    };
+    
+    const endLocation = {
+      latitude: 34.0522,
+      longitude: -118.2437
+    };
+
+    const middleLocations = {
+      latitude: 37.567, 
+      longitude: -120.012
+    };
+    // const middleLocations = [
+    //   { latitude: 12.345, longitude: 67.890 },
+    //   { latitude: 23.456, longitude: 78.901 },
+    //   { latitude: 34.567, longitude: 89.012 }
+    // ];
     return (
       <div>
         <h3>Phone data:</h3>
@@ -48,7 +46,12 @@ function PhoneData() {
             </li>
           ))}
         </ul>
-        <PhoneMap phoneData={phoneData} />
+        <PhoneMap
+          phoneData={phoneData}
+          startLocation={startLocation}
+          middleLocation={middleLocations}
+          endLocation={endLocation}
+        />
       </div>
     );
   }
