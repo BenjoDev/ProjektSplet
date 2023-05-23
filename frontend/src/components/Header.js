@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Header(props) {
     return (
         <header>
-            <h1>{props.title}</h1>
+            {/* <h1>{props.title}</h1>
             <nav>
                 <ul>
                     <li><Link to='/'>PhoneData</Link></li>
@@ -26,7 +26,7 @@ function Header(props) {
                         )}
                     </UserContext.Consumer>
                 </ul>
-            </nav>
+            </nav> */}
         </header >
     );
 }

@@ -35,8 +35,8 @@ function PhoneData() {
     // ];
     return (
       <div>
-        <h3>Phone data:</h3>
-        <ul>
+        {/* <h3>Phone data:</h3> */}
+        {/* <ul>
           {phoneData.map((item) => (
             <li key={item._id}>
               User: {item.capturedBy}, Latitude: {item.latitude}, Longitude: {item.longitude}, Capture date: {item.captureDate}, 
@@ -45,15 +45,13 @@ function PhoneData() {
               gyroscopeX: {item.gyroscopeX}, gyroscopeY: {item.gyroscopeY}, gyroscopeZ: {item.gyroscopeZ}, lightIntensity: {item.lightIntensity}
             </li>
           ))}
-        </ul>
-        <div style={{ height: '500px' }}>
+        </ul> */}
         <PhoneMap
           phoneData={phoneData}
           startLocation={startLocation}
           middleLocation={middleLocation}
           endLocation={endLocation}
         />
-      </div>
       </div>
     );
   }
