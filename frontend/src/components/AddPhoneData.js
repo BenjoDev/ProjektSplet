@@ -4,8 +4,11 @@ import { UserContext } from '../userContext';
 
 function AddPhoneData() {
     const userContext = useContext(UserContext); 
-    const[latitude, setLatitude] = useState('');
-    const[longitude, setLongitude] = useState('');
+    const[capturedBy, setCapturedBy] = useState('');
+    const[latitude_start, setLatitude_start] = useState('');
+    const[longitude_start, setLongitude_start] = useState('');
+    const[latitude_end, setLatitude_end] = useState('');
+    const[longitude_end, setLongitude_end] = useState('');
     const[accelerometerX, setAccelerometerX] = useState('');
     const[accelerometerY, setAccelerometerY] = useState('');
     const[accelerometerZ, setAccelerometerZ] = useState('');
@@ -24,7 +27,7 @@ function AddPhoneData() {
             method: 'POST',
             credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ latitude, longitude, accelerometerX, accelerometerY, accelerometerZ, userAccelerometerX, userAccelerometerY, userAccelerometerZ, 
+            body: JSON.stringify({ capturedBy, latitude_start, longitude_start, latitude_end, longitude_end, accelerometerX, accelerometerY, accelerometerZ, userAccelerometerX, userAccelerometerY, userAccelerometerZ, 
                 gyroscopeX, gyroscopeY, gyroscopeZ, lightIntensity })
           });
           const data = await res.json();
@@ -32,30 +35,28 @@ function AddPhoneData() {
           setUploaded(true);
       }
 
-    //   'latitude' : Number,
-	// 'longitude' : Number,
-	// 'captureDate' : Date,
-	// 'accelerometerX' : Number,
-	// 'accelerometerY' : Number,
-	// 'accelerometerZ' : Number,
-	// 'userAccelerometerX' : Number,
-	// 'userAccelerometerY' : Number,
-	// 'userAccelerometerZ' : Number,
-	// 'gyroscopeX' : Number,
-	// 'gyroscopeY' : Number,
-	// 'gyroscopeZ' : Number,
-	// 'lightIntensity' : Number
-
     return (
          <form className="form-group" onSubmit={onSubmit}>
             {!userContext.user ? <Navigate replace to="/login" /> : ""}
             {uploaded ? <Navigate replace to="/" /> : ""}
-            <label> Latitude:
-            <input type="number" name="latitude" className="form-control" value={latitude} onChange={(e) => setLatitude(e.target.value)} required/>
+            <label> capturedBy:
+            <input type="number" name="capturedBy" className="form-control" value={capturedBy} onChange={(e) => setCapturedBy(e.target.value)} required/>
             </label>
             <br />
-            <label> Longitude:
-            <input type="number" name="longitude" className="form-control" value={longitude} onChange={(e) => setLongitude(e.target.value)} required/>
+            <label> latitude_start:
+            <input type="number" name="latitude_start" className="form-control" value={latitude_start} onChange={(e) => setLatitude_start(e.target.value)} required/>
+            </label>
+            <br />
+            <label> longitude_start:
+            <input type="number" name="longitude_start" className="form-control" value={longitude_start} onChange={(e) => setLongitude_start(e.target.value)} required/>
+            </label>
+            <br />
+            <label> latitude_end:
+            <input type="number" name="latitude_end" className="form-control" value={latitude_end} onChange={(e) => setLatitude_end(e.target.value)} required/>
+            </label>
+            <br />
+            <label> longitude_end:
+            <input type="number" name="longitude_end" className="form-control" value={longitude_end} onChange={(e) => setLongitude_end(e.target.value)} required/>
             </label>
             <br />
             <label> accelerometerX:
