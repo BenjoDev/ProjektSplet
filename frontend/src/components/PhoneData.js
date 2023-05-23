@@ -14,25 +14,6 @@ function PhoneData() {
       getPhoneData();
     }, []);
 
-    const startLocation = {
-      latitude: 37.7749,
-      longitude: -122.4194
-    };
-    
-    const endLocation = {
-      latitude: 34.0522,
-      longitude: -118.2437
-    };
-
-    const middleLocation = {
-      latitude: 37.567, 
-      longitude: -120.012
-    };
-    // const middleLocations = [
-    //   { latitude: 12.345, longitude: 67.890 },
-    //   { latitude: 23.456, longitude: 78.901 },
-    //   { latitude: 34.567, longitude: 89.012 }
-    // ];
     return (
       <div>
         {/* <h3>Phone data:</h3> */}
@@ -48,9 +29,6 @@ function PhoneData() {
         </ul> */}
         <PhoneMap
           phoneData={phoneData}
-          startLocation={startLocation}
-          middleLocation={middleLocation}
-          endLocation={endLocation}
         />
       </div>
     );

@@ -4,7 +4,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-routing-machine';
 
-function PhoneMap({ phoneData, startLocation, middleLocation, endLocation }) {
+function PhoneMap({ phoneData }) {
   const mapRef = useRef(null);
   const routingControlRefs = useRef([]);
 
@@ -73,7 +73,7 @@ function PhoneMap({ phoneData, startLocation, middleLocation, endLocation }) {
         map.remove();
       }
     };
-  }, [phoneData, startLocation, middleLocation, endLocation]);
+  }, [phoneData]);
 
   return (
     <div style={{ height: '100vh', width: '100vw' }}>
