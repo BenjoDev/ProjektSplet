@@ -134,6 +134,7 @@ module.exports = {
     },
 
     login: function(req, res, next){
+        console.log("Login:" + req.body.username)
         UserModel.authenticate(req.body.username, req.body.password, function(err, user){
             if(err || !user){
                 var err = new Error('Wrong username or paassword');

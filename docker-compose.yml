@@ -14,7 +14,13 @@ services:
     networks:
       - mern-app
     depends_on:
-      - mongo
+      - mongo  
+  flask-server:
+    image: flask-server
+    ports:
+      - "5000:5000"
+    networks:
+      - mern-app
   mongo:
     image: mongo:3.6.19-xenial
     ports:
