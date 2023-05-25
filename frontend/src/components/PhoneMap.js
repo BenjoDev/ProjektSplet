@@ -19,7 +19,6 @@ function PhoneMap({ phoneData }) {
       maxZoom: 18
     }).addTo(map);
 
-
     phoneData.forEach(item => {
       let color = 'gray'; 
       if (item.roadQuality === 0) {
@@ -32,42 +31,50 @@ function PhoneMap({ phoneData }) {
         color = 'red';
       }
 
+      const polyline = L.polyline([
+        L.latLng(item.latitude_start, item.longitude_start), 
+        L.latLng(item.latitude_end, item.longitude_end)], 
+        { 
+          color: color 
+        }).addTo(map);
 
-      const routingControl = L.Routing.control({
-        waypoints: [
-          L.latLng(item.latitude_start, item.longitude_start),
-          // L.latLng(middleLocation.latitude, middleLocation.longitude),
-          L.latLng(item.latitude_end, item.longitude_end)
-        ],
+
+
+      // const routingControl = L.Routing.control({
+      //   waypoints: [
+      //     L.latLng(item.latitude_start, item.longitude_start),
+      //     // L.latLng(middleLocation.latitude, middleLocation.longitude),
+      //     L.latLng(item.latitude_end, item.longitude_end)
+      //   ],
         
-        routeWhileDragging: true,
-        lineOptions: {
-          styles: [
-            {
+      //   routeWhileDragging: true,
+      //   lineOptions: {
+      //     styles: [
+      //       {
               
-              color: color,
-              opacity: 0.6,
-              weight: 4
-            }
-          ]
-        },
-        createMarker: function() { return null; }
+      //         color: color,
+      //         opacity: 0.6,
+      //         weight: 4
+      //       }
+      //     ]
+      //   },
+      //   createMarker: function() { return null; }
 
-      }).addTo(map);
+      // }).addTo(map);
 
-      routingControlRefs.current.push(routingControl);
+      // routingControlRefs.current.push(routingControl);
 
     });
 
 
     return () => {
-      routingControlRefs.current.forEach((routingControlRef) => {
-        if (routingControlRef) {
-          routingControlRef.getPlan().setWaypoints([]);
-          routingControlRef.hide();
-          map.removeControl(routingControlRef);
-        }
-      });
+      // routingControlRefs.current.forEach((routingControlRef) => {
+      //   if (routingControlRef) {
+      //     routingControlRef.getPlan().setWaypoints([]);
+      //     routingControlRef.hide();
+      //     map.removeControl(routingControlRef);
+      //   }
+      // });
 
       if (map && typeof map.remove === 'function') {
         map.remove();

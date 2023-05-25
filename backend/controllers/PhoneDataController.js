@@ -92,7 +92,7 @@ module.exports = {
         // console.log(req.body.capturedBy);
 
         console.log(req.body.accelerometerX);
-        console.log(req.body.accelerometery);
+        console.log(req.body.accelerometerY);
         console.log(req.body.accelerometerZ);
         // console.log(req.body.longitude_end);
         
