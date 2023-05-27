@@ -11,5 +11,4 @@ COPY . .
 
 EXPOSE 3001
 
-# CMD [ "app.js" ]
 CMD [ "npm", "start" ]

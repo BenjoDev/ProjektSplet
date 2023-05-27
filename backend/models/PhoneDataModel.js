@@ -6,7 +6,7 @@ var PhoneDataSchema = new Schema({
 	// 	type: Schema.Types.ObjectId,
 	// 	ref: 'user'
    	// },
-	'capturedBy' : Number,
+	'capturedBy' : String,
 	'latitude_start' : Number,
 	'longitude_start' : Number,
 	'latitude_end' : Number,

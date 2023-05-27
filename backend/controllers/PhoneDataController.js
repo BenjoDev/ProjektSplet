@@ -59,6 +59,21 @@ module.exports = {
         });
     },
 
+    listUser: function (req, res) {
+        var username = req.params.user;
+
+        PhonedataModel.find({capturedBy: username}, function (err, PhoneDatas) {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Error when getting PhoneData.',
+                    error: err
+                });
+            }
+
+            return res.json(PhoneDatas);
+        });
+    },
+
     /**
      * PhoneDataController.show()
      */

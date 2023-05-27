@@ -32,8 +32,9 @@ function PhoneData() {
 
 return (
   <div>
-    <div style={{ height: '100vh', width: '100vw' }}>
-      <MapContainer center={[0, 0]} zoom={3} style={{ height: '100%', width: '100%' }}>
+    <div class="p-1">Kvaliteta cest: zeleno = dobro, oranžno = ok, rdeče = slabo</div>
+    <div style={{ height: '87vh', width: '100vw' }}>
+      <MapContainer center={[46.5547, 15.6466]} zoom={12} style={{ height: '100%', width: '100%' }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'

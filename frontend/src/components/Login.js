@@ -30,13 +30,13 @@ function Login(){
     }
 
     return (
-        <form onSubmit={Login}>
+        <form onSubmit={Login} class="p-4">
             {userContext.user ? <Navigate replace to="/" /> : ""}
-            <input type="text" name="username" placeholder="Username"
-             value={username} onChange={(e)=>(setUsername(e.target.value))}/>
-             <input type="password" name="password" placeholder="Password"
-             value={password} onChange={(e)=>(setPassword(e.target.value))}/>
-             <input type="submit" name="submit" value="Log in"/>
+            <input class="form-control" type="text" name="username" placeholder="Username"
+             value={username} onChange={(e)=>(setUsername(e.target.value))}/> <br/>
+             <input class="form-control" type="password" name="password" placeholder="Password"
+             value={password} onChange={(e)=>(setPassword(e.target.value))}/> <br/>
+             <input class="btn btn-primary" type="submit" name="submit" value="Log in"/>
              <label>{error}</label>
         </form>
     );

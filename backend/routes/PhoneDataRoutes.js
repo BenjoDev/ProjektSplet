@@ -19,6 +19,7 @@ function requiresLogin(req, res, next){
  * GET
  */
 router.get('/', PhoneDataController.list);
+router.get('/:user', PhoneDataController.listUser);
 
 /*
  * GET

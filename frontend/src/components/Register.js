@@ -31,11 +31,11 @@ function Register() {
     }
 
     return(
-        <form onSubmit={Register}>
-            <input type="text" name="email" placeholder="Email" value={email} onChange={(e)=>(setEmail(e.target.value))} />
-            <input type="text" name="username" placeholder="Username" value={username} onChange={(e)=>(setUsername(e.target.value))}/>
-            <input type="password" name="password" placeholder="Password" value={password} onChange={(e)=>(setPassword(e.target.value))} />
-            <input type="submit" name="submit" value="Login" />
+        <form onSubmit={Register} class="p-4">
+            <input class="form-control" type="text" name="email" placeholder="Email" value={email} onChange={(e)=>(setEmail(e.target.value))} /> <br/>
+            <input class="form-control" type="text" name="username" placeholder="Username" value={username} onChange={(e)=>(setUsername(e.target.value))}/> <br/>
+            <input class="form-control" type="password" name="password" placeholder="Password" value={password} onChange={(e)=>(setPassword(e.target.value))} /> <br/>
+            <input class="btn btn-primary" type="submit" name="submit" value="Register" />
             <label>{error}</label>
         </form>
     );

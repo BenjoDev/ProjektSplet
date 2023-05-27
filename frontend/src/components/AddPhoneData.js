@@ -40,7 +40,7 @@ function AddPhoneData() {
             {!userContext.user ? <Navigate replace to="/login" /> : ""}
             {uploaded ? <Navigate replace to="/" /> : ""}
             <label> capturedBy:
-            <input type="number" name="capturedBy" className="form-control" value={capturedBy} onChange={(e) => setCapturedBy(e.target.value)} required/>
+            <input type="text" name="capturedBy" className="form-control" value={capturedBy} onChange={(e) => setCapturedBy(e.target.value)} required/>
             </label>
             <br />
             <label> latitude_start:
