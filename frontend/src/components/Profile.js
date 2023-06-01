@@ -1,9 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
 import { UserContext } from '../userContext';
 import { Navigate } from 'react-router-dom';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Polyline } from 'react-leaflet';
+import { Chart } from 'chart.js/auto';
 
 function Profile(){
     const userContext = useContext(UserContext); 
@@ -43,6 +44,45 @@ function Profile(){
         }
     }, [profile.username]);
 
+    const ChartComponent = ({ data }) => {
+        const chartRef = useRef(null);
+      
+        useEffect(() => {
+          const chartData = {
+            labels: ['Dobro', 'Ok', 'Slabo'],
+            datasets: [
+              {
+                data: [
+                  data.filter((item) => item.roadQuality === 0).length,
+                  data.filter((item) => item.roadQuality === 1).length,
+                  data.filter((item) => item.roadQuality === 2).length,
+                ],
+                backgroundColor: ['green', 'orange', 'red'],
+              },
+            ],
+          };
+      
+          const chartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: false, // Disable animation
+          };
+      
+          const myChart = new Chart(chartRef.current, {
+            type: 'pie',
+            data: chartData,
+            options: chartOptions,
+          });
+      
+          return () => {
+            myChart.destroy();
+          };
+        }, [data]);
+      
+        return <canvas ref={chartRef} />;
+      };
+      
+
     return (
         <div>
             <div class="p-3">
@@ -51,8 +91,8 @@ function Profile(){
                 <p>Username: {profile.username}</p>
                 <p>Email: {profile.email}</p>
             </div>
-            
-            <div style={{ height: '74vh', width: '100vw' }}>
+            <div style={{ height: '74vh', width: '100%', display: 'flex' }}>
+            <div style={{ flex: 1 }}>
             <MapContainer center={[46.5547, 15.6466]} zoom={12} style={{ height: '100%', width: '100%' }}>
                 <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -81,6 +121,11 @@ function Profile(){
                 })}
             </MapContainer>
             </div>
+            <div style={{ flex: 1 }}>
+                <ChartComponent data={phoneData} />
+            </div>
+            </div>
+
         </div>
     );
 }
