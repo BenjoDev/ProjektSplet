@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const postMe = require('@post-me/mpi');
 
 // vključimo mongoose in ga povežemo z MongoDB
 var mongoose = require('mongoose');

@@ -1,7 +1,35 @@
+import { createPool } from '@post-me/mpi';
+
 var PhonedataModel = require('../models/PhoneDataModel.js');
 
 
-function calculateShakingLevel(accelerometerData, gyroscopeData) {
+
+async function calculateShakingLevel(accelerometerData, gyroscopeData) {
+    ///////////////EXAMPLE//////////////////////////////
+    const array = [accelerometerData, gyroscopeData];
+    const N_WORKERS = 4;
+
+    // Create the workers
+    const workers =  [];
+    for (let i = 0; i < N_WORKERS; ++i) {
+        workers.push(new Worker('./worker.js'));
+    }
+
+    // Create a pool of mutually interconnected workers
+    const workerPool = await createPool(workers);
+
+    // Pass different parameter to the parallel method based on the rank of the worker
+    const root = 0;
+    const args = (rank) => rank === root ? array : null;
+    const transfer = (rank, [arr]) => rank === root ? [arr.buffer] : [];
+
+    // Call the parallel method 'sort'
+    const result = await workerPool.call('calculateStandardDeviation', args, transfer);
+
+    // The sorted array is returned by the root worker
+    const finalResult = result[root];
+    //////////////////////////////////////////////////
+
     // Calculate standard deviation for accelerometer data
     const accelerometerStandardDeviation = calculateStandardDeviation(accelerometerData);
     // Calculate standard deviation for gyroscope data
@@ -97,8 +125,6 @@ module.exports = {
             return res.json(PhoneData);
         });
     },
-
-    
 
     /**
      * PhoneDataController.create()
