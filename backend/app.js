@@ -20,7 +20,7 @@ var phoneDataRouter = require('./routes/PhoneDataRoutes');
 var app = express();
 
 var cors = require('cors');
-var allowedOrigins = ['http://localhost:3000', 'http://localhost:3001'];
+var allowedOrigins = ['http://localhost:3000', 'http://localhost:3001', 'http://127.0.0.1:3000', 'http://127.0.0.1:3001'];
 app.use(cors({
   credentials: true,
   origin: function(origin, callback){
