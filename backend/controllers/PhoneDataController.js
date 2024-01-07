@@ -106,9 +106,9 @@ module.exports = {
     create: function (req, res) {
         // console.log(req.body.capturedBy);
 
-        console.log(req.body.accelerometerX);
-        console.log(req.body.accelerometerY);
-        console.log(req.body.accelerometerZ);
+        // console.log(req.body.accelerometerX);
+        // console.log(req.body.accelerometerY);
+        console.log(req.body);
         // console.log(req.body.longitude_end);
         
 
@@ -132,7 +132,11 @@ module.exports = {
             roadQuality: calculateShakingLevel(req.body.accelerometerX, req.body.gyroscopeX)
         });
 
+        console.log(PhoneData);
+
+
         PhoneData.save(function (err, PhoneData) {
+            console.log("Napaka: " + err);
             if (err) {
                 return res.status(500).json({
                     message: 'Error when creating PhoneData',
