@@ -37,7 +37,7 @@ def send_post_request(data):
         print('POST request successful:', response.json())
     except requests.exceptions.RequestException as e:
         print('Error sending POST request:', e)
-        print('Response content:', response.content)
+        # print('Response content:', response.content)
 
 
 

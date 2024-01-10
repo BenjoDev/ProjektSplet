@@ -11,6 +11,7 @@ services:
     image: api-server
     ports:
       - "3001:3001"
+      - "5666:5666"
     networks:
       - mern-app
     depends_on:

@@ -1,0 +1,13 @@
+"hosts" : 
+[
+    {
+        "hostname": "localhost",
+        "processes": 3
+    }
+    ,
+    {
+        "hostname": "192.168.1.10",
+        "processes": 3
+    }
+],
+"mainFile" : "app.js"
