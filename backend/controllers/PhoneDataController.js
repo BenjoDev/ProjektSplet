@@ -5,9 +5,6 @@ const { Worker, isMainThread, parentPort } = require('worker_threads');
 
 
 const calculateStandardDeviationWorker = async (data) => {
-
-    console.log("In CSDW");
-
     const n = data.length;
     if (n <= 1) {
         return 0;
@@ -43,8 +40,6 @@ const calculateStandardDeviationWorker = async (data) => {
 
   // Run both functions in parallel
   const calculateParalel = async (accelerometerData, gyroscopeData) => {
-    console.log("In CP");
-
     try {
         // promise all - paralelno
         const [result1, result2] = await Promise.all([calculateStandardDeviationWorker(accelerometerData), calculateStandardDeviationWorker(gyroscopeData)]);
@@ -60,9 +55,6 @@ const calculateStandardDeviationWorker = async (data) => {
    
 
 async function calculateShakingLevel(accelerometerData, gyroscopeData) {
-
-    console.log("In CSL");
-
     // // Calculate standard deviation for accelerometer data
     // const accelerometerStandardDeviation = calculateStandardDeviation(accelerometerData);
     // // Calculate standard deviation for gyroscope data
